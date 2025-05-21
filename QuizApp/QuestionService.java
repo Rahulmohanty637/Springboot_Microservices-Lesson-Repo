@@ -34,4 +34,17 @@ public class QuestionService {
             System.out.println(s);
         }
     }
+
+    public void printScore() {
+        int score = 0;
+        for (int i = 0; i < questions.length; i++) {
+            Question q = questions[i];
+            String actualAnswer = q.getAnswer();
+            String userAnswer = ans[i];
+            if (actualAnswer.equals(userAnswer)) {
+                score++;
+            }
+        }
+        System.out.println("Score : " + score);
+    }
 }
