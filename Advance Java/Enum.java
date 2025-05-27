@@ -8,7 +8,7 @@ public class Enum {
         System.out.println(s);
         System.out.println(s.ordinal());
 
-        Status[] ss = Status.values();
+        Status[] ss = Status.values(); // values() provides all the enum object as an array
         for (int i = 0; i < ss.length; ++i) {
             System.out.println(ss[i] + " : " + ss[i].ordinal());
         }

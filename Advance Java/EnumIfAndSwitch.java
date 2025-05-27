@@ -6,6 +6,7 @@ public class EnumIfAndSwitch {
     public static void main(String[] args) {
 
         Status s = Status.Failed;
+        System.out.println(s.getClass().getSuperclass());
 
         // If Else statement
         if (s == Status.Success) {
