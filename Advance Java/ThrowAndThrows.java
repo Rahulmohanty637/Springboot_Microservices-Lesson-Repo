@@ -1,3 +1,9 @@
+class RahulException extends Exception {
+    public RahulException(String str) {
+        super(str);
+    }
+}
+
 public class ThrowAndThrows {
     public static void main(String[] args) {
         int i = 20;
@@ -6,9 +12,9 @@ public class ThrowAndThrows {
         try {
             j = 18 / i;
             if (j == 0) {
-                throw new ArithmeticException("Don't want to print zero");
+                throw new RahulException("Don't want to print zero");
             }
-        } catch (ArithmeticException e) {
+        } catch (RahulException e) {
             j = 18 / 1;
             System.out.println("Thats the default output " + e);
         } catch (Exception e) {
