@@ -19,5 +19,6 @@ public class AbstractAIC {
             }
 
         };
+        obj.config();
     }
 }
