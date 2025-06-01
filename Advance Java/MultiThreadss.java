@@ -64,8 +64,22 @@ public class MultiThreadss {
             }
         };
 
-         Thread t2 = new Thread(obj4);
+        Thread t2 = new Thread(obj4);
         t2.start();
+
+        Runnable obj5 = () -> {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Hi");
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread t3 = new Thread(obj5);
+        t3.start();
 
     }
 }
