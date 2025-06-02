@@ -15,6 +15,7 @@ public class CollectionSet {
         set.add(92);
         set.add(83);
 
+        // Set does not allows duplicate value
         System.out.println(set);
 
         Iterator<Integer> values = set.iterator();
