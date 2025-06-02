@@ -43,13 +43,13 @@ public class MultiThreadss {
         B obj2 = new B();
         Runnable obj3 = new C();
 
-        // obj2.setPriority(Thread.MAX_PRIORITY);
-        // System.out.println(obj1.getPriority());
-        // obj1.start();
-        // obj2.start();
+        obj2.setPriority(Thread.MAX_PRIORITY);
+        System.out.println(obj1.getPriority());
+        obj1.start();
+        obj2.start();
 
-        // Thread t1 = new Thread(obj3);
-        // t1.start();
+        Thread t1 = new Thread(obj3);
+        t1.start();
 
         Runnable obj4 = new Runnable() {
             public void run() {
