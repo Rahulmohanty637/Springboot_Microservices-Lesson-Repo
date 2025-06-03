@@ -13,8 +13,17 @@ public class StreamEx {
         }
 
         int sum1 = nums.stream().map(i -> i * 2).reduce(0, (c, e) -> c + e);
-        int sum2 = nums.stream().map(i -> i * 2).mapToInt(i -> i).sum();
 
-        System.out.println(sum1 + " " + sum2);
+        long startSeq = System.currentTimeMillis();
+        int sum2 = nums.stream().map(i -> i * 2).mapToInt(i -> i).sum();
+        long endSeq = System.currentTimeMillis();
+
+        long startPara = System.currentTimeMillis();
+        int sum3 = nums.parallelStream().map(i -> i * 2).mapToInt(i -> i).sum();
+        long endPara = System.currentTimeMillis();
+
+        System.out.println(sum2 + " " + sum3);
+        System.out.println("Sequential Time: " + (endSeq - startSeq));
+        System.out.println("Para Time: " + (endPara - startPara));
     }
 }
