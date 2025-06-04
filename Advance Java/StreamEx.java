@@ -12,7 +12,7 @@ public class StreamEx {
             nums.add(ran.nextInt(100));
         }
 
-        int sum1 = nums.stream().map(i -> i * 2).reduce(0, (c, e) -> c + e);
+        // int sum1 = nums.stream().map(i -> i * 2).reduce(0, (c, e) -> c + e);
 
         long startSeq = System.currentTimeMillis();
         int sum2 = nums.stream().map(i -> i * 2).mapToInt(i -> i).sum();
