@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Print {
     public static void main(String[] args) {
         // Custom input array
@@ -23,5 +26,28 @@ public class Print {
             // Printing sorted array elements
             System.out.print(arr[i] + " ");
         }
+
+        // Custom input array
+        int[] arr1 = { 13, 7, 6, 45, 21, 9, 101, 102 };
+
+        // Calling the sort() method present
+        // inside Arrays class
+        Arrays.sort(arr1);
+
+        // Printing and display sorted array
+        System.out.printf("Modified arr[] : %s",
+                Arrays.toString(arr));
+
+        // Note that we have Integer here instead of
+        // int[] as Collections.reverseOrder doesn't
+        // work for primitive types.
+        Integer[] arr2 = { 13, 7, 6, 45, 21, 9, 2, 100 };
+
+        // Sorts arr[] in descending order
+        // Arrays.sort(arr, Collections.reverseOrder());
+
+        System.out.printf("Modified arr[] : %s",
+                Arrays.toString(arr));
     }
+
 }
