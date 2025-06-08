@@ -6,7 +6,7 @@
         <property name="hibernate.connection.password">JSR#3306monty</property>
 
         <!--it creates the table if it does not exist and uses if it does-->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!--to specify the dialect of the dbms-->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
