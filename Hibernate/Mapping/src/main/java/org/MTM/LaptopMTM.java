@@ -1,12 +1,13 @@
-package org.example;
-
+package org.MTM;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
+
+import java.util.List;
 
 @Entity
-public class Laptop {
+public class LaptopMTM {
 
     @Id
     private int lid;
@@ -17,15 +18,15 @@ public class Laptop {
 
     private int ram;
 
-    @ManyToOne
-    private Alien alien;
+    @ManyToMany(mappedBy = "laptops")
+    private List<AlienMTM> aliens;
 
-    public Alien getAlien() {
-        return alien;
+    public List<AlienMTM> getAliens() {
+        return aliens;
     }
 
-    public void setAlien(Alien alien) {
-        this.alien = alien;
+    public void setAliens(List<AlienMTM> aliens) {
+        this.aliens = aliens;
     }
 
     public String getBrand() {
@@ -70,4 +71,3 @@ public class Laptop {
                 '}';
     }
 }
-

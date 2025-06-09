@@ -1,14 +1,14 @@
-package org.example;
+package org.MTM;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
 @Entity
-public class Alien {
-
+public class AlienMTM {
     @Id
     private int aid;
 
@@ -16,8 +16,8 @@ public class Alien {
 
     private String tech;
 
-    @OneToMany(mappedBy = "alien")
-    private List<Laptop> laptops;
+    @ManyToMany
+    private List<LaptopMTM> laptops;
 
 
     public String getTech() {
@@ -44,11 +44,11 @@ public class Alien {
         this.aid = aid;
     }
 
-    public List<Laptop> getLaptops() {
+    public List<LaptopMTM> getLaptops() {
         return laptops;
     }
 
-    public void setLaptops(List<Laptop> laptops) {
+    public void setLaptops(List<LaptopMTM> laptops) {
         this.laptops = laptops;
     }
 
@@ -62,4 +62,3 @@ public class Alien {
                 '}';
     }
 }
-

@@ -1,4 +1,4 @@
-package org.example;
+package org.OTM;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,8 +45,8 @@ public class Main {
 
 
         SessionFactory sf = new Configuration()
-                .addAnnotatedClass(org.example.Alien.class)
-                .addAnnotatedClass(org.example.Laptop.class)
+                .addAnnotatedClass(org.OTM.Alien.class)
+                .addAnnotatedClass(org.OTM.Laptop.class)
                 .configure()
                 .buildSessionFactory();      // cfg.buildSessionFactory();
 
