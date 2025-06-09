@@ -1,6 +1,7 @@
 package org.OTM;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -16,7 +17,7 @@ public class Alien {
 
     private String tech;
 
-    @OneToMany(mappedBy = "alien")
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Laptop> laptops;
 
 

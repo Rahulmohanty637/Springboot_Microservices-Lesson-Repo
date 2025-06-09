@@ -79,7 +79,7 @@ public class Main {
         transaction.commit();
 
         AlienMTM a4 = session.get(AlienMTM.class, 102);
-        System.out.println(a2);
+        System.out.println(a4);
         session.close();
         sf.close();
     }

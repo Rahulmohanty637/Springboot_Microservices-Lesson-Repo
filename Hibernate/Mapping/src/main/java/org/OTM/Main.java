@@ -23,25 +23,29 @@ public class Main {
         l2.setModel("Omega");
 
         Laptop l3 = new Laptop();
-        l1.setLid(3);
-        l1.setRam(32);
-        l1.setBrand("HP");
-        l1.setModel("Omen");
+        l3.setLid(3);
+        l3.setRam(32);
+        l3.setBrand("HP");
+        l3.setModel("Omen");
 
         Laptop l4 = new Laptop();
-        l1.setLid(4);
-        l1.setRam(64);
-        l1.setBrand("Apple");
-        l1.setModel("macbook");
+        l4.setLid(4);
+        l4.setRam(64);
+        l4.setBrand("Apple");
+        l4.setModel("macbook");
 
         Alien a1 = new Alien();
         a1.setAid(101);
         a1.setAname("Rahul");
         a1.setTech("Java");
-        a1.setLaptops(Arrays.asList(l1, l2, l3, l4));
 
-        l1.setAlien(a1);
-        l2.setAlien(a1);
+        Alien a2 = new Alien();
+        a2.setAid(102);
+        a2.setAname("Harsh");
+        a2.setTech("Python");
+
+        a1.setLaptops(Arrays.asList(l1, l2, l3, l4));
+        a2.setLaptops(Arrays.asList(l3, l4));
 
 
         SessionFactory sf = new Configuration()
@@ -60,9 +64,11 @@ public class Main {
         session.persist(a1);
         transaction.commit();
 
-        Alien a2 = session.get(Alien.class, 101);
-        System.out.println(a2);
+        Session session1 = sf.openSession();
+        Alien a3 = session1.get(Alien.class, 101);
+//        System.out.println(a3);
         session.close();
+        session1.close();
         sf.close();
     }
 }

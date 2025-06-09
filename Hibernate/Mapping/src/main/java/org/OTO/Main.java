@@ -7,17 +7,17 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
-        LaptopOTO l1 = new LaptopOTO();
-        l1.setLid(1);
-        l1.setRam(16);
-        l1.setBrand("Asus");
-        l1.setModel("Rog");
+        LaptopOTO la1 = new LaptopOTO();
+        la1.setLid(1);
+        la1.setRam(16);
+        la1.setBrand("Asus");
+        la1.setModel("Rog");
 
         AlienOTO a1 = new AlienOTO();
         a1.setAid(101);
         a1.setAname("Rahul");
         a1.setTech("Java");
-        a1.setLaptop(l1);
+        a1.setLaptop(la1);
 
 
 
@@ -30,7 +30,7 @@ public class Main {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.persist(l1);
+        session.persist(la1);
         session.persist(a1);
         transaction.commit();
 
