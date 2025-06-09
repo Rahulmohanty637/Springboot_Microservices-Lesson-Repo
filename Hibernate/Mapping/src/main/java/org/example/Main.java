@@ -7,8 +7,6 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Arrays;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
@@ -24,31 +22,27 @@ public class Main {
         l2.setBrand("Dell");
         l2.setModel("Omega");
 
-//        Laptop l3 = new Laptop();
-//        l1.setLid(3);
-//        l1.setRam(32);
-//        l1.setBrand("HP");
-//        l1.setModel("Omen");
-//
-//        Laptop l4 = new Laptop();
-//        l1.setLid(4);
-//        l1.setRam(64);
-//        l1.setBrand("Apple");
-//        l1.setModel("macbook");
+        Laptop l3 = new Laptop();
+        l1.setLid(3);
+        l1.setRam(32);
+        l1.setBrand("HP");
+        l1.setModel("Omen");
+
+        Laptop l4 = new Laptop();
+        l1.setLid(4);
+        l1.setRam(64);
+        l1.setBrand("Apple");
+        l1.setModel("macbook");
 
         Alien a1 = new Alien();
         a1.setAid(101);
         a1.setAname("Rahul");
         a1.setTech("Java");
-        a1.setLaptops(Arrays.asList(l1, l2));
+        a1.setLaptops(Arrays.asList(l1, l2, l3, l4));
 
         l1.setAlien(a1);
         l2.setAlien(a1);
 
-
-//        Configuration cfg = new Configuration();
-//        cfg.addAnnotatedClass(org.cipherWiz.Student.class);
-//        cfg.configure();
 
         SessionFactory sf = new Configuration()
                 .addAnnotatedClass(org.example.Alien.class)
@@ -61,8 +55,8 @@ public class Main {
 
         session.persist(l1);
         session.persist(l2);
-//        session.persist(l3);
-//        session.persist(l4);
+        session.persist(l3);
+        session.persist(l4);
         session.persist(a1);
         transaction.commit();
 
