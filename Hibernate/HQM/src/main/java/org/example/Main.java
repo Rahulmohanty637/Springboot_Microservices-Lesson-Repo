@@ -40,8 +40,20 @@ public class Main {
             System.out.println(data[0] + " " + data[1]);
         }
 
+        level2Caching(sf);
+
         transaction.commit();
         session.close();
         sf.close();
+    }
+
+    public static void level2Caching (SessionFactory sf){
+        Session session = sf.openSession();
+
+        // Level one caching
+        Laptop l1 = session.get(Laptop.class, 2);
+        Laptop l2 = session.get(Laptop.class, 2);
+        System.out.println(l1);
+        System.out.println(l2);
     }
 }
