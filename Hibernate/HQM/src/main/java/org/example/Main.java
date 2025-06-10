@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Objects;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -23,10 +24,17 @@ public class Main {
 
 //        Laptop l1 = session.get(Laptop.class, 4);
 
-        Query query = session.createQuery("from Laptop where ram=32");
-        List<Laptop> laptopList = query.getResultList();
+        String brand = "Asus";
+
+        Query query = session.createQuery("select model, brand from Laptop where brand like ?1");
+        query.setParameter(1, brand);
+        List<Objects[]> laptopList = query.getResultList();
 
         System.out.println(laptopList);
+
+        for (Object [] data : laptopList){
+            System.out.println(data[0] + " " + data[1]);
+        }
 
         transaction.commit();
         session.close();
