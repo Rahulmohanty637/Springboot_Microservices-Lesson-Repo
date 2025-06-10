@@ -22,7 +22,8 @@ public class Main {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-//        Laptop l1 = session.get(Laptop.class, 4);
+        Laptop l1 = session.load(Laptop.class, 4);
+        System.out.println(l1);
 
         String brand = "Asus";
 
