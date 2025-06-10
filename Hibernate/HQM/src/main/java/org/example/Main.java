@@ -22,8 +22,11 @@ public class Main {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
+        // both methods are used for lazy loading but load() got deprecated, and get() is used for eager loading
         Laptop l1 = session.load(Laptop.class, 4);
+        Laptop l2 = session.byId(Laptop.class).getReference(4);
         System.out.println(l1);
+        System.out.println(l2);
 
         String brand = "Asus";
 
