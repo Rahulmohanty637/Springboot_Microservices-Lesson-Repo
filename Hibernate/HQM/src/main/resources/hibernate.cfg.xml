@@ -13,6 +13,13 @@
 
         <!--to show the sql query running behind the scene-->
         <property name="hibernate.show_sql">true</property>
-        <!--        <property name="hibernate.format_sql">true</property>-->
+        <!--<property name="hibernate.format_sql">true</property>-->
+
+        <!--In case if the dependencies does not work properly, then use this-->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory
+        </property>
+        <property name="hibernate.jakarta.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+
     </session-factory>
 </hibernate-configuration>

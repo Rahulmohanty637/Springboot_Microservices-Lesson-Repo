@@ -50,10 +50,23 @@ public class Main {
     public static void level2Caching (SessionFactory sf){
         Session session = sf.openSession();
 
-        // Level one caching
+        // Level one caching, implemented by default in hibernate when 2 same requests were made using same session
         Laptop l1 = session.get(Laptop.class, 2);
         Laptop l2 = session.get(Laptop.class, 2);
         System.out.println(l1);
         System.out.println(l2);
+        session.close();
+
+        // Level two caching
+        Session session1 = sf.openSession();
+        Laptop l3 = session1.get(Laptop.class, 1);
+        System.out.println(l3);
+        session1.close();
+
+        Session session2 = sf.openSession();
+        Laptop l4 = session2.get(Laptop.class, 1);
+        System.out.println(l4);
+        session2.close();
+
     }
 }
