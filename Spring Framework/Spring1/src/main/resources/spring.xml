@@ -27,10 +27,12 @@
         <property name="age" value="21"/>
 
         <!--
-        Uncomment this to explicitly inject a bean named 'com2' into Alien's 'com' property.
+        Uncomment this to explicitly inject a bean named 'com1' into Alien's 'com' property.
         This avoids ambiguity if autowiring by type fails due to multiple matching beans.
+        Explicitly injects the 'com1' bean (Desktop) into the 'com' property of the 'alien' bean.
+        This overrides autowiring ambiguity if multiple matching beans exist
         -->
-        <!-- <property name="com" ref="com2"/> -->
+        <property name="com" ref="com1"/>
 
         <!-- ====================== CONSTRUCTOR INJECTION OPTIONS ====================== -->
 
@@ -68,14 +70,37 @@
 
     <!--
     Bean Definitions for injection candidates.
-
     Uncomment the one you want Spring to use, or resolve ambiguity using byName or @Qualifier in code.
     -->
 
     <!--
-    <bean id="com" class="org.example.Laptop"/>
-    -->
+    Bean definition for Laptop.
+    The 'primary="true"' attribute is used to mark this bean as the **default candidate**
+    when multiple beans of the same type exist and Spring needs to autowire by type.
 
-    <bean id="com1" class="org.example.Desktop"/>
+    Use case:
+    If you autowire a Computer-type bean and both 'com' (Laptop) and 'com1' (Desktop) exist,
+    Spring will prefer the one marked as primary (Laptop in this case).
+    -->
+    <bean id="com" class="org.example.Laptop" primary="true"/>
+
+    <!--
+    Another Computer-type bean (Desktop).
+    Since this is not marked as primary, it will not be auto-injected unless explicitly referenced.
+    -->
+    <!--
+    Bean definition for 'com1' (Desktop).
+    Attribute: lazy-init="true"
+
+    Explanation:
+    - This tells Spring **not to initialize** the bean at application startup.
+    - Instead, the bean will be created **only when it is first requested** (i.e., lazily).
+    - Useful for optimizing startup time, especially for heavy or rarely used beans.
+
+    Note:
+    - By default, Spring initializes all singleton beans eagerly at context startup.
+    - lazy-init="true" overrides that behavior for this specific bean.
+    -->
+    <bean id="com1" class="org.example.Desktop" lazy-init="true"/>
 
 </beans>
