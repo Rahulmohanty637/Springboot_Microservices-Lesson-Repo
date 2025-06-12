@@ -14,7 +14,7 @@ public class App {
 //        System.out.println("Hello World!");
 
         // If the scope of bean is prototype then the object will be created upon getBean() calling, because it will create a different object everytime getBean will be called, whereas bean with singleton scope will create only one object no matter how many times getBean() is called.
-        Alien obj1 = (Alien) context.getBean("alien");
+        Alien obj1 = context.getBean("alien", Alien.class);
 //        obj1.setAge(21);
         System.out.println(obj1.getAge());
         obj1.code();
