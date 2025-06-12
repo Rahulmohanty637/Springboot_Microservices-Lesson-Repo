@@ -4,10 +4,16 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="alien" class="org.example.Alien" scope="prototype">
+    <!--<bean id="alien" class="org.example.Alien" scope="prototype"/>-->
+
+    <bean id="alien" class="org.example.Alien">
+        <!--Set values of primitive datatype variables using setter method called - SETTER INJECTION-->
+        <property name="age" value="21"/>
+
+        <!--Injecting the value of object using ref attribute-->
+        <property name="lap" ref="lap1"/>
     </bean>
 
-    <bean id="lap" class="org.example.Laptop">
-    </bean>
+    <bean id="lap1" class="org.example.Laptop"/>
 
 </beans>
