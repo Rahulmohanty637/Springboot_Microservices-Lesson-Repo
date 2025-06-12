@@ -4,18 +4,23 @@ package org.example;
 public class Alien {
 
     private int age;
-    private Laptop lap;
+    private Computer com;
 
-    public Laptop getLap() {
-        return lap;
-    }
-
-    public void setLap(Laptop lap) {
-        this.lap = lap;
-    }
+//    public Alien(int age, Laptop lap) {
+//        this.age = age;
+//        this.lap = lap;
+//    }
 
     public Alien() {
-        System.out.println("Object Created!");
+//        System.out.println("Object Created!");
+    }
+
+    public Computer getCom() {
+        return com;
+    }
+
+    public void setCom(Computer com) {
+        this.com = com;
     }
 
     public int getAge() {
@@ -27,8 +32,8 @@ public class Alien {
     }
 
     public void code() {
-        System.out.println("Coding");
-        lap.compile();
+//        System.out.println("Coding");
+        com.compile();
     }
 
 }

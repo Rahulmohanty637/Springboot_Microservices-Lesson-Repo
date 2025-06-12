@@ -2,18 +2,80 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--<bean id="alien" class="org.example.Alien" scope="prototype"/>-->
+    <!--
+    Bean definition for the 'alien' object.
 
-    <bean id="alien" class="org.example.Alien">
-        <!--Set values of primitive datatype variables using setter method called - SETTER INJECTION-->
+    - autowire="byType": Spring will try to match a bean based on the property type (class).
+    If more than one bean of that type exists (like com and com1), Spring throws NoUniqueBeanDefinitionException.
+
+    Alternative values:
+    - autowire="byName": Injects bean by matching the property name with the bean id.
+    - autowire="constructor": Uses constructor-based autowiring.
+    - autowire="no": Default, requires explicit <property> or <constructor-arg> setup.
+    -->
+
+    <bean id="alien" class="org.example.Alien" autowire="byType">
+
+        <!--
+        Setter Injection Example:
+        Setting primitive or string properties using setter methods.
+        In this case, it sets `age` field of Alien using setAge(int).
+        -->
         <property name="age" value="21"/>
 
-        <!--Injecting the value of object using ref attribute-->
-        <property name="lap" ref="lap1"/>
+        <!--
+        Uncomment this to explicitly inject a bean named 'com2' into Alien's 'com' property.
+        This avoids ambiguity if autowiring by type fails due to multiple matching beans.
+        -->
+        <!-- <property name="com" ref="com2"/> -->
+
+        <!-- ====================== CONSTRUCTOR INJECTION OPTIONS ====================== -->
+
+        <!--
+        Constructor Injection (Basic Form):
+        - Relies on the order of constructor arguments.
+        - Can be problematic if multiple constructors exist or parameters have the same type.
+        -->
+        <!--
+        <constructor-arg type="org.example.Laptop" ref="lap1"/>
+        <constructor-arg type="int" value="22"/>
+        -->
+
+        <!--
+        Constructor Injection (Using index):
+        - Resolves ambiguity by specifying the position of arguments in constructor.
+        - Most reliable when parameter types are the same or overloaded.
+        -->
+        <!--
+        <constructor-arg index="1" ref="lap1"/>
+        <constructor-arg index="0" value="23"/>
+        -->
+
+        <!--
+        Constructor Injection (Using name):
+        - Matches constructor parameters by their name.
+        - Requires debug symbols or @ConstructorProperties annotation in newer Java versions.
+        -->
+        <!--
+        <constructor-arg name="lap" ref="lap1"/>
+        <constructor-arg name="age" value="24"/>
+        -->
+
     </bean>
 
-    <bean id="lap1" class="org.example.Laptop"/>
+    <!--
+    Bean Definitions for injection candidates.
+
+    Uncomment the one you want Spring to use, or resolve ambiguity using byName or @Qualifier in code.
+    -->
+
+    <!--
+    <bean id="com" class="org.example.Laptop"/>
+    -->
+
+    <bean id="com1" class="org.example.Desktop"/>
 
 </beans>
