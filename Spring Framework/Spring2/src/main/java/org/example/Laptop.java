@@ -1,6 +1,9 @@
 package org.example;
 
-public class Lapop implements Computer {
+import org.springframework.stereotype.Component;
+
+@Component
+public class Laptop implements Computer {
 
     @Override
     public void compile() {
