@@ -10,5 +10,8 @@ public class App
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println( "Hello World!" );
+
+        Desktop dt = context.getBean(Desktop.class);
+        dt.compile();
     }
 }
