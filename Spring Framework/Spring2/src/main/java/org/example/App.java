@@ -12,7 +12,7 @@ public class App
         ApplicationContext context = new AnnotationConfigApplicationContext(ComponentConfig.class);
 
         Alien obj1 = context.getBean(Alien.class);
-        System.out.println(obj1.getAge());
+//        System.out.println(obj1.getAge());
         obj1.code();
 
 //        Desktop dt1 = context.getBean("desktop",Desktop.class);
