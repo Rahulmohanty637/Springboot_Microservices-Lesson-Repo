@@ -1,7 +1,7 @@
 package com.cipherwiz.SpringJDBCEx.service;
 
-import com.cipherwiz.SpringJDBCEx.StudentRepo;
 import com.cipherwiz.SpringJDBCEx.model.Student;
+import com.cipherwiz.SpringJDBCEx.repo.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    private StudentRepo repo;
+    private com.cipherwiz.SpringJDBCEx.repo.StudentRepo repo;
 
     public StudentRepo getRepo() {
         return repo;
