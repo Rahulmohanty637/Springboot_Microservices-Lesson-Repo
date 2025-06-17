@@ -1,24 +1,24 @@
 package org.example;
 
 import org.apache.catalina.Context;
-import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
-/**
- * Hello world!
- */
-public class App {
-    public static void main(String[] args) throws LifecycleException {
-        System.out.println("Hello World!");
-        Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
+import java.io.File;
 
-        Context context = tomcat.addContext("", null);
+public class App {
+    public static void main(String[] args) throws Exception {
+        Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8080); // Optional: default is 8080
+        tomcat.setBaseDir("temp");
+
+        // Create context with current directory as docBase
+        Context context = tomcat.addContext("", new File(".").getAbsolutePath());
+
+        // Register the servlet
         Tomcat.addServlet(context, "HelloServlet", new HelloServlet());
         context.addServletMappingDecoded("/hello", "HelloServlet");
 
         tomcat.start();
         tomcat.getServer().await();
-
     }
 }
