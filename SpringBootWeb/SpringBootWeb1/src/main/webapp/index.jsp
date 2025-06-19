@@ -1,10 +1,14 @@
 <%@page language="java" %>
 
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<head/>
  <body>
-   <h2>Hello World!!!</h2>
+
 
       <form action="add">
+        <h2>Calculator</h2>
         <label htmlFor="num1">Enter 1st number : </label>
         <input type="text" id="num1" name="num1"/><br />
         <label htmlFor="num2">Enter 2nd number : </label>
