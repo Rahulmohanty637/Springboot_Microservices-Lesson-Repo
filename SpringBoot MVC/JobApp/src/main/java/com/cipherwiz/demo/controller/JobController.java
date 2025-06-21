@@ -1,4 +1,4 @@
-package com.cipherwiz.demo;
+package com.cipherwiz.demo.controller;
 
 import com.cipherwiz.demo.model.JobPost;
 import com.cipherwiz.demo.service.JobService;
