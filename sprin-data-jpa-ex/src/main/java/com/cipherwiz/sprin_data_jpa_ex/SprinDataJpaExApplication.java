@@ -12,7 +12,7 @@ public class SprinDataJpaExApplication {
 		ApplicationContext context = SpringApplication.run(SprinDataJpaExApplication.class, args);
 
 		StudentRepo repo = context.getBean(StudentRepo.class);
-		
+
 		Student s1 = context.getBean(Student.class);
 		Student s2 = context.getBean(Student.class);
 		Student s3 = context.getBean(Student.class);
@@ -29,6 +29,7 @@ public class SprinDataJpaExApplication {
 		s3.setName("Kapil");
 		s3.setMarks(67);
 
+		repo.save(s1);
 	}
 
 }
