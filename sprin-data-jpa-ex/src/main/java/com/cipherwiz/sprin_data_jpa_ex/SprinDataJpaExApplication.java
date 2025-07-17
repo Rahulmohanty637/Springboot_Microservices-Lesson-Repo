@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class SprinDataJpaExApplication {
 
@@ -17,19 +19,32 @@ public class SprinDataJpaExApplication {
 		Student s2 = context.getBean(Student.class);
 		Student s3 = context.getBean(Student.class);
 
-		s1.setRollno(101);
-		s1.setName("Navin");
-		s1.setMarks(75);
+//		s1.setRollno(101);
+//		s1.setName("Navin");
+//		s1.setMarks(75);
+//
+//		s2.setRollno(102);
+//		s2.setName("Viren");
+//		s2.setMarks(52);
+//
+//		s3.setRollno(103);
+//		s3.setName("Kapil");
+//		s3.setMarks(67);
+//
+//		repo.save(s1);
+//		repo.save(s2);
+//		repo.save(s3);
 
-		s2.setRollno(102);
-		s2.setName("Viren");
-		s2.setMarks(52);
+		System.out.println(repo.findAll());
+		System.out.println(repo.findById(102));
 
-		s3.setRollno(103);
-		s3.setName("Kapil");
-		s3.setMarks(67);
+		Optional<Student> s = repo.findById(104);
 
-		repo.save(s1);
+		System.out.println(s.orElse(new Student()));
+
+		System.out.println(repo.findByName("Navin"));
+		System.out.println(repo.findByMarks(52));
+		System.out.println(repo.findByMarksGreaterThan(60));
 	}
 
 }
