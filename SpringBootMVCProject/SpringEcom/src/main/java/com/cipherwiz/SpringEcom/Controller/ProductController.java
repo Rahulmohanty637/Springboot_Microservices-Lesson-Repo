@@ -35,6 +35,12 @@ public class ProductController {
         }
     }
 
+    @GetMapping("product/{productId}/image")
+    public ResponseEntity<byte[]> getImage(@PathVariable int productId){
+        Product product = productService.getProductById(productId);
+        return new ResponseEntity<>(product.getImageData(), HttpStatus.OK);
+    }
+
     @PostMapping("/product")
     public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart MultipartFile imageFile){
         Product savedProduct = null;
@@ -44,6 +50,19 @@ public class ProductController {
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
+    }
+    
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct (@PathVariable int id, @RequestPart Product product, @RequestPart MultipartFile image){
+        Product updatedProduct = null;
+        
+        try {
+            updatedProduct = productService.updateProduct(product, image);
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        }
+        catch (IOException e){
+            ResponseEntity<String> stringResponseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return stringResponseEntity;
+        }
     }
 }
