@@ -1,9 +1,7 @@
 package com.cipherwiz.SpringEcom.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,14 +17,21 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private String name;
     private String description;
     private String brand;
     private BigDecimal price;
     private String category;
-    private Date releaseData;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
+    private Date releaseDate;
     private boolean productAvailability;
     private int stockQuantity;
+    private String imageName;
+    private String imageType;
+    @Lob
+    private byte[] imageData;
+
 
 }
