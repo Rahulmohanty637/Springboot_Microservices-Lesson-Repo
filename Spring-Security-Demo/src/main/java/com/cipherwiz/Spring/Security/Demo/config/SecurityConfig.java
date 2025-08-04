@@ -8,6 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -57,4 +61,20 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+    // By default the Spring Security uses something called a UserDetailsService.
+    // It uses this class to basically check for your application.properties and see do you have username and password there ?
+    // if yes, it will use it. let's define our own UserDetailService
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User
+                .withDefaultPasswordEncoder()
+                .username("navin").password("n@123")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }
+
 }
