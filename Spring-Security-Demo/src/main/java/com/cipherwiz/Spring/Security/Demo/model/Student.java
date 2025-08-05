@@ -1,4 +1,4 @@
-package com.cipherwiz.Spring.Security.Demo;
+package com.cipherwiz.Spring.Security.Demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

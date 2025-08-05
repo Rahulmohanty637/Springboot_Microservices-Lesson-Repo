@@ -1,5 +1,6 @@
-package com.cipherwiz.Spring.Security.Demo;
+package com.cipherwiz.Spring.Security.Demo.controller;
 
+import com.cipherwiz.Spring.Security.Demo.model.Student;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;

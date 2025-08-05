@@ -1,4 +1,4 @@
-package com.cipherwiz.Spring.Security.Demo;
+package com.cipherwiz.Spring.Security.Demo.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
