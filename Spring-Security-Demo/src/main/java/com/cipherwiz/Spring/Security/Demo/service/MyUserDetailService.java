@@ -2,6 +2,7 @@ package com.cipherwiz.Spring.Security.Demo.service;
 
 import com.cipherwiz.Spring.Security.Demo.dao.UserRepo;
 import com.cipherwiz.Spring.Security.Demo.model.User;
+import com.cipherwiz.Spring.Security.Demo.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,7 +23,7 @@ public class MyUserDetailService implements UserDetailsService {
             System.out.println("User 404");
             throw new UsernameNotFoundException("User 404");
         }
-        
-        return null;
+
+        return new UserPrincipal(user);
     }
 }
