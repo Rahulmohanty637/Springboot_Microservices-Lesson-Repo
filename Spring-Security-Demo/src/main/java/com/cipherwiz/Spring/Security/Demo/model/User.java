@@ -7,7 +7,7 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 public class User {
-    
+
     @Id
     private int id;
     private String username;
